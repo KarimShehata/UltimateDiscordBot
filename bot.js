@@ -21,6 +21,12 @@ bot.on('ready', function (evt) {
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
+bot.on("messageReactionAdd", (messageReaction, user) => {
+	messageReaction.remove(user).then(messageReaction => {
+		console.log('Removed a reaction.');
+	});
+});
+
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
